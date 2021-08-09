@@ -1,0 +1,17 @@
+<div class="list">
+    <p *ngFor="
+        let item of passengersList
+          | paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: page,
+                totalItems: totalPassengers
+              }
+      ">
+        {{ item.name }}
+        <span>{{ item.airline.country }}</span> <br />
+        <img src="{{ item.airline.logo }}" alt="" /> <br />
+        <span>{{ item.airline.slogan }}</span> <br />
+    </p>
+</div>
+<pagination-controls class="pagination" (pageChange)="pageChange((page = $event))"></pagination-controls>
